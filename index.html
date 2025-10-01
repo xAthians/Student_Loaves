@@ -1,0 +1,50 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="header">
+        <button class="button-language" data-menu="language-menu" id="language-button"></button>
+        <div class="dropdown-menu" id="language-menu">
+            <button>English</button>
+            <button>Suomi</button>
+            <button>Svenska</button>
+        </div>
+        Student Loaves
+        <button class="button-account" data-menu="account-menu" id="account-button"></button>
+        <div class="dropdown-menu" id="account-menu">
+            <button>Sign in</button>
+        </div>
+    </div>
+    <div class="nav"></div>
+    <div class="footer">
+        <button class="bottom-buttons">Terms of Service</button>
+        <button class="bottom-buttons">Guidelines</button>
+        <button class="bottom-buttons">Business contact</button>
+    </div>
+</body>
+
+</html>
+
+<script>
+    document.addEventListener("click", (e) => {
+        const clickedDropdown = e.target.closest("[data-menu]");
+
+        document.querySelectorAll(".dropdown-menu").forEach((menu) => {
+            menu.style.display = "none";
+        });
+
+        if (clickedDropdown) {
+            const menuId = clickedDropdown.dataset.menu;
+            const menu = document.getElementById(menuId);
+            if (menu) {
+                const rect = clickedDropdown.getBoundingClientRect();
+                menu.style.top = `${rect.bottom + window.scrollY}px`;
+                menu.style.left = `${rect.left + window.scrollX}px`;
+                menu.style.display = "flex";
+            }
+        }
+    });
+</script>
