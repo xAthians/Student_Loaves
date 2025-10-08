@@ -33,7 +33,10 @@ body {
 }
 
 .content-box {
-    
+    display: none;
+}
+#breakfast {
+    display: flex;
 }
 
 .nav {

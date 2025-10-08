@@ -29,15 +29,15 @@
     </div>
 
     <div class="nav">
-            <a href="#" class="nav-button">Breakfast</a>
-            <a href="#" class="nav-button">Lunch</a>
-            <a href="#" class="nav-button">Quick Snacks</a>
-            <a href="#" class="nav-button">Dinner</a>
-            <a href="#" class="nav-button">Before Bed</a>
+        <a href="#" class="nav-button" data-category="breakfast">Breakfast</a>
+        <a href="#" class="nav-button" data-category="lunch">Lunch</a>
+        <a href="#" class="nav-button" data-category="snacks">Quick Snacks</a>
+        <a href="#" class="nav-button" data-category="dinner">Dinner</a>
+        <a href="#" class="nav-button" data-category="beforebed">Before Bed</a>
     </div>
 
     <div class="page-content">
-        <p>
+        <p class="content-box" id="breakfast">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et
             dolore
             magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
@@ -47,6 +47,18 @@
             est
             laborum.
         </p>
+        <p class="content-box" id="lunch">
+            Lunchies lunch of them lunches
+        </p>
+        <p class="content-box" id="snacks">
+            i snack on snackies, straight up snacking it
+        </p>
+        <p class="content-box" id="dinner">
+            winner winnder chicken dinner
+        </p>
+        <p class="content-box" id="beforebed">
+            warm milk
+        </p>
     </div>
 </body>
 
@@ -55,6 +67,7 @@
 <script>
     document.addEventListener("click", (e) => {
         const clickedDropdown = e.target.closest("[data-menu]");
+        const clickedCategory = e.target.closest("[data-category]");
 
         document.querySelectorAll(".dropdown-menu").forEach((menu) => {
             menu.style.display = "none";
@@ -68,6 +81,18 @@
                 menu.style.top = `${rect.bottom + window.scrollY}px`;
                 menu.style.left = `${rect.left + window.scrollX}px`;
                 menu.style.display = "flex";
+            }
+        }
+
+        if (clickedCategory) {
+            const categoryId = clickedCategory.dataset.category;
+            const category = document.getElementById(categoryId)
+
+            document.querySelectorAll(".content-box").forEach((category) => {
+                category.style.display = "none";
+            })
+            if (category) {
+                category.style.display = "flex";
             }
         }
     });
