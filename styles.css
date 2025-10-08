@@ -8,10 +8,23 @@
     --color-secondary: #FCEEEB;
     --color-secondary-darker: #f3e5e2;
 }
+html, body {
+    overscroll-behavior: none;
+}
 
 body {
     background-color: #F9F5F0;
     font-family: 'Oswald', serif;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding-top: calc(var(--main-bar-height) + var(--secondary-bar-height)); /* offset for fixed header + nav */
 }
 
 .header {
@@ -30,7 +43,8 @@ body {
 }
 
 .page-content {
-    padding-top: calc(var(--main-bar-height) + 10px);
+    flex: 1;
+    padding-top: 25px;
 }
 
 .content-box {
@@ -43,14 +57,15 @@ body {
     flex-wrap: wrap;
     width: 100%;
     gap: 33px;
-    padding: 50px 25px;
+    padding: 0px 25px;
+    padding-bottom: 25px;
 }
 
 .recipe-box {
     flex: 0 0 calc(33.33% - 24px);
     background-color: var(--color-secondary);
     border: 1px solid var(--border-color);
-    height: 200%;
+    height: 300px;
     text-align: center;
     border-radius: 8px;
 }
@@ -101,9 +116,8 @@ body {
 }
 
 .footer {
-    position: fixed;
-    bottom: 0;
     left: 0;
+    bottom: 0;
     width: 100%;
     display: flex;
     align-items: center;
