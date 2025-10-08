@@ -6,6 +6,7 @@
     --border-color: #c6c5c5;
     --color-main: #E7795F;
     --color-secondary: #FCEEEB;
+    --color-secondary-darker: #f3e5e2;
 }
 
 body {
@@ -35,6 +36,25 @@ body {
 .content-box {
     display: none;
 }
+
+.recipe-area {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    gap: 33px;
+    padding: 50px 25px;
+}
+
+.recipe-box {
+    flex: 0 0 calc(33.33% - 24px);
+    background-color: var(--color-secondary);
+    border: 1px solid var(--border-color);
+    height: 200%;
+    text-align: center;
+    border-radius: 8px;
+}
+
 #breakfast {
     display: flex;
 }
@@ -77,6 +97,7 @@ body {
 .nav-button:hover {
     outline: var(--border-thickness) solid var(--border-color);
     outline-offset: -1px;
+    background-color: var(--color-secondary-darker);
 }
 
 .footer {
