@@ -62,12 +62,31 @@ body {
 }
 
 .recipe-box {
-    flex: 0 0 calc(33.33% - 24px);
+    flex: 0 0 calc(25% - 27px);
+    max-width: calc(25% - 27px);
     background-color: var(--color-secondary);
     border: 1px solid var(--border-color);
-    height: 300px;
+    height: 400px;
     text-align: center;
     border-radius: 8px;
+    overflow: scroll;
+}
+
+.recipe-box img {
+    max-width: 90%;
+    max-height: 50%;
+    border-radius: 8px;
+}
+
+.recipe-box p, h2 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 24px;
+    margin: 16px;
+}
+
+.recipe-box:hover {
+    cursor: pointer;
 }
 
 #breakfast {
