@@ -1,5 +1,6 @@
 const recipes = [
     {
+        id: "example-food",
         title: "Example food",
         author: "Example Man",
         description: "Example description",
@@ -15,6 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
     recipes.forEach(recipe => {
         const recipeBox = document.createElement("div");
         recipeBox.classList.add("recipe-box");
+        recipeBox.id = recipe.id;
 
         const recipeTitle = document.createElement("h2");
         recipeTitle.textContent = recipe.title;
