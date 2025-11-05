@@ -1,4 +1,4 @@
-const recipes = [
+recipes = [
     {
         id: "example-food",
         category: "breakfast",
@@ -58,7 +58,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const recipeBox = document.createElement("div");
         recipeBox.classList.add("recipe-box");
-        recipeBox.id = recipe.id;
+        recipeBox.dataset.id = recipe.id;
 
         const recipeTitle = document.createElement("h2");
         recipeTitle.textContent = recipe.title;

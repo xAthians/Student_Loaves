@@ -39,7 +39,7 @@ body {
     justify-content: space-evenly;
     background-color: var(--color-main);
     font-size: 2.75em;
-    z-index: 1000;
+    z-index: 100;
 }
 
 .page-content {
@@ -68,8 +68,32 @@ body {
     border: 1px solid var(--border-color);
     height: 400px;
     text-align: center;
+    justify-content: center;
     border-radius: 8px;
     overflow: scroll;
+}
+
+.pop-up-recipe {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50%;
+    max-width: 400px;
+    height: 500px;
+    background-color: var(--color-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    text-align: center;
+    overflow: scroll;
+    z-index: 1001;
+}
+
+.pop-up-recipe img {
+    max-width: 90%;
+    max-height: 50%;
+    border-radius: 8px;
 }
 
 .recipe-box img {
@@ -93,6 +117,18 @@ body {
     display: flex;
 }
 
+.dimmer {
+  display: none;
+    background: #000;
+    opacity: 0.5;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+}
+
 .nav {
     position: fixed;
     top: var(--main-bar-height);
@@ -104,7 +140,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-evenly;
-    z-index: 900;
+    z-index: 90;
 }
 
 .nav-button {
@@ -220,7 +256,7 @@ body {
     display: none;
     flex-direction: column;
     gap: 4px;
-    z-index: 999;
+    z-index: 200;
 }
 
 .dropdown-menu button {

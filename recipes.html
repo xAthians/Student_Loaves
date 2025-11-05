@@ -9,6 +9,7 @@
         href="https://fonts.googleapis.com/css2?family=Bitcount+Ink:wght@100..900&family=Oswald:wght@200..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
         rel="stylesheet">
     <title>Recipes</title>
+    <script src="main.js"></script>
 </head>
 
 <body>
@@ -37,6 +38,14 @@
     </div>
 
     <div class="wrapper">
+        <div class="dimmer">
+            <span class="exit-dimmming"></span>
+        </div>
+        <div class="pop-up-recipe">
+            <h2>Title</h2>
+            <p>Author</p>
+            <img src="">
+        </div>
         <div class="page-content">
             <div class="content-box" id="breakfast">
                 <div class="recipe-area"></div>
@@ -60,9 +69,6 @@
         <button class="bottom-buttons">Guidelines</button>
         <button class="bottom-buttons">Business contact</button>
     </div>
-
-
-    <script src="main.js"></script>
 </body>
 
 </html>
@@ -71,10 +77,21 @@
     document.addEventListener("click", (e) => {
         const clickedDropdown = e.target.closest("[data-menu]");
         const clickedCategory = e.target.closest("[data-category]");
+        const clickedRecipe = e.target.closest(".recipe-box");
+        const dimmer = e.target.closest(".dimmer");
 
         document.querySelectorAll(".dropdown-menu").forEach((menu) => {
             menu.style.display = "none";
         });
+
+        if (dimmer) {
+            document.querySelectorAll(".dimmer").forEach((dimmer) => {
+                dimmer.style.display = "none";
+            })
+            document.querySelectorAll(".pop-up-recipe").forEach((pop) => {
+                pop.style.display = "none";
+            })
+        }
 
         if (clickedDropdown) {
             const menuId = clickedDropdown.dataset.menu;
@@ -97,6 +114,25 @@
             if (category) {
                 category.style.display = "flex";
             }
+        }
+
+        if (clickedRecipe) { 
+            const recipeId = clickedRecipe.dataset.id;
+            const recipe = recipes.find(r => r.id === recipeId);
+            
+            document.querySelectorAll(".dimmer").forEach((dimmer) => {
+                dimmer.style.display = "flex";
+            })
+            document.querySelectorAll(".pop-up-recipe").forEach((pop) => {        
+                const title = pop.querySelector("h2");
+                const author = pop.querySelector("p");
+                const img = pop.querySelector("img");
+                
+                title.textContent = recipe.title;
+                author.textContent = recipe.author;
+                img.src = recipe.image;
+                pop.style.display = "block";
+            })
         }
     });
 </script>
