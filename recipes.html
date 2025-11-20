@@ -45,6 +45,7 @@
             <h2>Title</h2>
             <p>Author</p>
             <img src="">
+            <section class="padding">Desc</section>
             <div></div>
         </div>
         <div class="page-content">
@@ -128,11 +129,13 @@
                 const title = pop.querySelector("h2");
                 const author = pop.querySelector("p");
                 const img = pop.querySelector("img");
+                const desc = pop.querySelector("section");
                 const tags = pop.querySelector("div");
 
                 title.textContent = recipe.title;
                 author.textContent = recipe.author;
                 img.src = recipe.image;
+                desc.textContent = recipe.description;
                 tags.textContent = recipe.tags.join(", ");
                 pop.style.display = "block";
             })
