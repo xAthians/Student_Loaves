@@ -31,10 +31,10 @@
 
     <div class="nav">
         <a href="#" class="nav-button" data-category="breakfast">Breakfast</a>
-        <a href="#" class="nav-button" data-category="lunch">Lunch</a>
-        <a href="#" class="nav-button" data-category="snacks">Quick Snacks</a>
         <a href="#" class="nav-button" data-category="dinner">Dinner</a>
-        <a href="#" class="nav-button" data-category="beforebed">Before Bed</a>
+        <a href="#" class="nav-button" data-category="sweets">Sweets</a>
+        <a href="#" class="nav-button" data-category="vegan">Vegan</a>
+        <a href="#" class="nav-button" data-category="easy">Easy</a>
     </div>
 
     <div class="wrapper">
@@ -45,21 +45,22 @@
             <h2>Title</h2>
             <p>Author</p>
             <img src="">
+            <div></div>
         </div>
         <div class="page-content">
-            <div class="content-box" id="breakfast">
+            <div class="content-box" id="breakfast" data-tag="Breakfast">
                 <div class="recipe-area"></div>
             </div>
-            <div class="content-box" id="lunch">
+            <div class="content-box" id="dinner" data-tag="Dinner">
                 <div class="recipe-area"></div>
             </div>
-            <div class="content-box" id="snacks">
+            <div class="content-box" id="sweets" data-tag="Sweets">
                 <div class="recipe-area"></div>
             </div>
-            <div class="content-box" id="dinner">
+            <div class="content-box" id="vegan" data-tag="Vegan">
                 <div class="recipe-area"></div>
             </div>
-            <div class="content-box" id="beforebed">
+            <div class="content-box" id="easy" data-tag="Easy">
                 <div class="recipe-area"></div>
             </div>
         </div>
@@ -116,21 +117,23 @@
             }
         }
 
-        if (clickedRecipe) { 
+        if (clickedRecipe) {
             const recipeId = clickedRecipe.dataset.id;
             const recipe = recipes.find(r => r.id === recipeId);
-            
+
             document.querySelectorAll(".dimmer").forEach((dimmer) => {
                 dimmer.style.display = "flex";
             })
-            document.querySelectorAll(".pop-up-recipe").forEach((pop) => {        
+            document.querySelectorAll(".pop-up-recipe").forEach((pop) => {
                 const title = pop.querySelector("h2");
                 const author = pop.querySelector("p");
                 const img = pop.querySelector("img");
-                
+                const tags = pop.querySelector("div");
+
                 title.textContent = recipe.title;
                 author.textContent = recipe.author;
                 img.src = recipe.image;
+                tags.textContent = recipe.tags.join(", ");
                 pop.style.display = "block";
             })
         }
