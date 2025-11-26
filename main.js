@@ -303,5 +303,32 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
     });
+
+    const randomContainer = document.getElementById("random-recipes");
+    if (randomContainer) {
+        const shuffled = [...recipes].sort(() => 0.5 - Math.random());
+        const selected = shuffled.slice(0, 4);
+
+        selected.forEach(recipe => {
+            const recipeBox = document.createElement("div");
+            recipeBox.classList.add("recipe-box");
+            recipeBox.dataset.id = recipe.id;
+
+            const recipeTitle = document.createElement("h2");
+            recipeTitle.textContent = recipe.title;
+
+            const recipeCreator = document.createElement("p");
+            recipeCreator.textContent = recipe.author;
+
+            const recipeImage = document.createElement("img");
+            recipeImage.src = recipe.image;
+
+            recipeBox.appendChild(recipeTitle);
+            recipeBox.appendChild(recipeCreator);
+            recipeBox.appendChild(recipeImage);
+
+            randomContainer.appendChild(recipeBox);
+        });
+    }
 });
 
