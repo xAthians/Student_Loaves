@@ -267,6 +267,7 @@ recipes = [
 });
 */
 document.addEventListener("DOMContentLoaded", () => {
+    // recipes.html
     const contentBoxes = document.querySelectorAll(".content-box");
 
     recipes.forEach(recipe => {
@@ -303,5 +304,34 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
     });
+
+    // main page recipes
+    const randomContainer = document.getElementById("random-recipes");
+    if (randomContainer) {
+        // Shuffle and pick 4
+        const shuffled = [...recipes].sort(() => 0.5 - Math.random());
+        const selected = shuffled.slice(0, 4);
+
+        selected.forEach(recipe => {
+            const recipeBox = document.createElement("div");
+            recipeBox.classList.add("recipe-box");
+            recipeBox.dataset.id = recipe.id;
+
+            const recipeTitle = document.createElement("h2");
+            recipeTitle.textContent = recipe.title;
+
+            const recipeCreator = document.createElement("p");
+            recipeCreator.textContent = recipe.author;
+
+            const recipeImage = document.createElement("img");
+            recipeImage.src = recipe.image;
+
+            recipeBox.appendChild(recipeTitle);
+            recipeBox.appendChild(recipeCreator);
+            recipeBox.appendChild(recipeImage);
+
+            randomContainer.appendChild(recipeBox);
+        });
+    }
 });
 
